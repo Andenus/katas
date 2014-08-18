@@ -6,7 +6,7 @@
   [s]
   (if (not (nil? (first s)))
     (if 
-     (not (= (mod (first s) 2) 0))
+     (not= (mod (first s) 2) 0)
      (cons (first s) (filter-odd (rest s)))
      (filter-odd (rest s)))
      ()
@@ -27,7 +27,11 @@
   "Escribir una funcion que cree una lista de enteros en un rango dado.
    Restricciones: range"
   [start end]
-  )
+  (if (not= start end) 
+    (cons start (range (+ start 1) end))
+    ()
+   )  
+)
 
 (defn compress-sequence
   "Escribir una funcion que elimine los duplicados consecutivos
