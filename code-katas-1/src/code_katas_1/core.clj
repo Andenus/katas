@@ -4,6 +4,13 @@
   "Escribir una funcion que retorne solamente los numeros impares de
    una secuencia"
   [s]
+  (if (not (nil? (first s)))
+    (if 
+     (not (= (mod (first s) 2) 0))
+     (cons (first s) (filter-odd (rest s)))
+     (filter-odd (rest s)))
+     ()
+    )
   )
 
 (defn nil-key
