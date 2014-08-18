@@ -37,6 +37,19 @@
   "Escribir una funcion que elimine los duplicados consecutivos
    de una secuencia"
   [s]
+  (if (nil? (first s))
+    (str)
+    (if (char? (first s))
+      (if (= (first s) (second s))
+        (compress-sequence (rest s))
+        (str (first s) (compress-sequence (rest s)))
+       )
+      (if (= (first s) (second s))
+        (compress-sequence (rest s))
+        (cons (first s) (compress-sequence (rest s)))
+       )
+      )
+   )
   )
 
 (defn max-value
