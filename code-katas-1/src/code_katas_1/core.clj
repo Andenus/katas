@@ -5,7 +5,7 @@
    una secuencia"
   [s]
   (if (not (nil? (first s)))
-    (if 
+    (if
      (not= (mod (first s) 2) 0)
      (cons (first s) (filter-odd (rest s)))
      (filter-odd (rest s)))
@@ -27,10 +27,10 @@
   "Escribir una funcion que cree una lista de enteros en un rango dado.
    Restricciones: range"
   [start end]
-  (if (not= start end) 
+  (if (not= start end)
     (cons start (range (+ start 1) end))
     ()
-   )  
+   )
 )
 
 (defn compress-sequence
@@ -56,7 +56,11 @@
   "Escribir una funcion que reciba un numero variable de parametros
    y retorne el que tenga el valor mayor
    Restricciones: max y max-key"
-  [& args])
+  [& args]
+  (
+    first (sort > args)
+  )
+)
 
 (defn split-two
   "Escribir una funcion que parta una secuencia en dos partes
