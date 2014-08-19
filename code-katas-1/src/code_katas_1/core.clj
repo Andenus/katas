@@ -66,7 +66,10 @@
   "Escribir una funcion que parta una secuencia en dos partes
    Restricciones: split-at"
   [length s]
-  )
+  (
+   vector (vec (take length s)) (vec (drop length s))
+   )
+)
 
 (defn inter-two
   "Escribir una funcion que reciba dos secuencias y retorne el primero de cada una,
