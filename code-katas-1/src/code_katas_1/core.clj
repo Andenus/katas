@@ -87,6 +87,9 @@
   "Escribir una funcion que reciba un string y devuelva un nuevo string conteniendo
    solamente las mayusculas."
   [text]
+  (
+   apply str (re-seq #"[A-Z]" text)
+   )
   )
 
 (defn find-truth
