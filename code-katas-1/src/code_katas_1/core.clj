@@ -97,6 +97,11 @@
    solamente si alguno de los parametros son true, pero no todos son true. En otro
    caso debera retornar false"
   [& xs]
+  (
+   if (and (not (every? true? xs)) (some true? xs))
+    true
+    false
+   )
   )
 
 (defn zip-map
