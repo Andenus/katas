@@ -109,4 +109,9 @@
    construya un mapa a partir de ellos.
    Restricciones: zipmap"
   [k v]
+  (
+   if (or (nil? (first k)) (nil? (first v)))
+    {}
+    (merge {(first k) (first v)} (zip-map (rest k) (rest v)))
+   )
   )
