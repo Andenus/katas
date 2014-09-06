@@ -48,4 +48,18 @@
    La funcion debe aceptar una secuencia inicial de numeros, y devolver una secuencia infinita de compresiones, donde
    cada nuevo elemento es el elemento anterior comprimido."
   [secuencia]
+  (;iterate       Si pongo el iterate aca vuela todo por los aires, si
+   ;no lo pongo funciona pero no genera la lista infinita ya que hace
+   ;una sola iteracion
+   #(let [conscount (inc (count ((fn consseq [aseq]
+                                   (if (and (not (nil? (second aseq))) (= (first aseq) (second aseq)))
+                                     (cons (first aseq) (consseq (rest aseq)))
+                                     ()
+                                     )) %)))]
+              (lazy-seq (if (nil? (first %))
+                          ()
+                          (if (nil? (second %))
+                            (seq [conscount (first %)])
+                            (cons conscount (cons (first %) (tartamudeo (drop conscount %)))))))
+      ) secuencia)
   )
