@@ -12,14 +12,17 @@
   "Dado un numero cualquiera de secuencias, cada una ya ordenada de menor a mayor, encontrar el numero
    mas chico que aparezca en todas las secuencias, las secuencias pueden ser infinitas."
   [& seqs]
-  ((fn aux [c t seq]
-     (if (= (first seq) (second seq))
-       (aux (inc c) t (rest seq))
-       (if (= c t)
-         (first seq)
-         (aux 1 t (rest seq))
-         )
-       )) 1 (count seqs) (sort < (concat seqs)))
+  (if (apply = (map #(first %) seqs))
+    (ffirst seq)
+    (search (for [x seqs]
+              ((fn filtmins [myseq seqmins]
+                 (if (nil? (first seqmins))
+                   (seq myseq)
+                   (if (= (first myseq) (first seqmins))
+                     (filtmins (rest myseq) (rest seqmins))
+                     (filtmins myseq (rest seqmins))
+                     ))) x (drop 1 (sort > (map #(first %) seqs))))
+              )))
   )
 
 
