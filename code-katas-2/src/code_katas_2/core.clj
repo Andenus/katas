@@ -5,6 +5,12 @@
   "Escribir una funcion que acepte una funcion parcial con cantidad de argumentos desconocida,
    retornar una funcion equivalente de n argumentos"
   [f]
+  (fn [& args]
+     (if (fn? (f (first args)))
+       ((unpartial (f (first args))) (rest args))
+       (f (first args))
+         )
+    )
   )
 
 
